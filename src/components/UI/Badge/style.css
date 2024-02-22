@@ -2,7 +2,8 @@
   text-transform: uppercase;
   border-radius: 10px;
   padding: 2px 10px;
-  font-size: 1rem;
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 .badge.new {

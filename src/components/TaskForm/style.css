@@ -27,17 +27,33 @@
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 10px;
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+
+.form-input.error {
+  border-color: red;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.form-input.error:focus {
+  border-color: red;
+}
+
+.form-input-error {
+  color: red;
+  font-size: 1.2rem;
+}
+
+.form-item-badges {
+  display: flex;
+  flex-direction: column;
 }
 
 .form-badge {
-  width: 100%;
-  padding: 12px 20px;
+  padding: 5px 5px;
   display: inline-block;
   font-size: 1.5rem;
   text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 10px;
   margin: 10px 0px;
 }
 
@@ -46,13 +62,14 @@
   min-height: 100px;
 }
 
-.form-input.checkbox {
-  height: 50px;
+.form-item.checkbox {
+  display: flex;
 }
 
-.form-item.checkbox {
-  display: block;
-  text-align: center;
+.form-input.checkbox {
+  height: 50px;
+  width: 50px;
+  margin-left: 1rem;
 }
 
 .form-actions {
@@ -61,14 +78,30 @@
   justify-content: center;
 }
 
+.form-action-button {
+  margin: 5px 5px;
+}
+
 @media (min-width: 768px) {
   .form-container {
     max-width: 700px;
+  }
+  .form-action-button {
+    margin: 10px 10px;
+  }
+  .form-item-badges {
+    flex-direction: row;
   }
 }
 
 @media (min-width: 1281px) {
   .form-container {
     max-width: 1000px;
+  }
+  .form-action-button {
+    margin: 10px 10px;
+  }
+  .form-item-badges {
+    flex-direction: row;
   }
 }

@@ -1,9 +1,8 @@
 import { MdAddCircle } from 'react-icons/md';
 import TaskList from '../../components/TaskList/TaskList';
-import './style.css';
-import IconButton from '../../components/UI/IconButton/IconButton';
-import { iconButton } from '../../types/iconButton';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../components/UI/Button/Button';
+import './style.css';
 
 type Props = {};
 
@@ -18,13 +17,14 @@ const Tasks = (props: Props) => {
     <div className="main-container">
       <div className="main-title-container">
         <h1 className="main-title">Tasks</h1>
-        <IconButton
-          icon={<MdAddCircle></MdAddCircle>}
-          type={iconButton.round}
+        <Button
+          text="Add Task"
+          startIcon={<MdAddCircle></MdAddCircle>}
+          className="form-action-button"
           action={() => {
             handleAddTask();
           }}
-        ></IconButton>
+        ></Button>
       </div>
       <TaskList></TaskList>
     </div>

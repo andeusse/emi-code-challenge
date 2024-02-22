@@ -34,7 +34,7 @@ const Task = (props: task & Props) => {
         }`}
       >
         <h2 className="task-title">{title}</h2>
-        <div className="task-containt">
+        <div className="task-content">
           <p className="task-description">{description}</p>
           <p>
             <span>
@@ -44,10 +44,12 @@ const Task = (props: task & Props) => {
           {lastStateHistory !== undefined && (
             <div className="task-last-state">
               <h3>Last State:</h3>
-              <Bagde
-                type={lastStateHistory.state}
-                text={` on ${lastStateHistory.date.toString()}`}
-              ></Bagde>
+              <div className="task-last-state-badge">
+                <Bagde
+                  type={lastStateHistory.state}
+                  text={` on ${lastStateHistory.date.toString()}`}
+                ></Bagde>
+              </div>
             </div>
           )}
           <h3>Notes</h3>

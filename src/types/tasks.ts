@@ -19,6 +19,14 @@ export type task = {
   notes: string[];
 };
 
+export type taskErrors = {
+  hasErrors: boolean;
+  title: string;
+  description: string;
+  dueDate: string;
+  notes: string[];
+};
+
 export type tasks = {
   tasks: task[];
 };
