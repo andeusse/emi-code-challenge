@@ -1,0 +1,16 @@
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.button {
+  font-size: var(--main-font-size);
+}
+
+.button-icon {
+  position: relative;
+  top: 3px;
+}

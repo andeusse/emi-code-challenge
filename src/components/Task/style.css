@@ -1,0 +1,53 @@
+.task-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  height: auto;
+  border-color: black;
+  border-style: solid;
+  border-radius: 20px;
+}
+
+.task-title {
+  font-size: var(--main-font-size);
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.task-containt {
+  margin: 0.8rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.task-description {
+  padding: 1rem 0;
+  font-size: 1.1rem;
+}
+
+.task-last-state {
+  text-transform: capitalize;
+  font-size: 0.9rem;
+}
+
+.task-last-state-date {
+  text-align: center;
+}
+
+.task-notes-list {
+  text-decoration: dotted;
+  padding-left: 2rem;
+}
+
+.task-incompleted {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.task-completed {
+  background-color: rgba(0, 128, 0, 0.5);
+}
+
+.task-actions {
+  text-align: center;
+}

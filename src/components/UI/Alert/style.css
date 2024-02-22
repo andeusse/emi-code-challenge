@@ -1,0 +1,50 @@
+.alert {
+  display: inline-block;
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.alert-icon {
+  display: inline-block;
+  font-size: 1.5rem;
+  position: relative;
+  top: 5px;
+  padding-right: 1rem;
+}
+
+.alert-text {
+  display: inline-block;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.alert-close-icon {
+  font-size: 1.5rem;
+  position: relative;
+  top: 5px;
+  float: right;
+  cursor: pointer;
+}
+
+.alert.success {
+  background-color: rgba(0, 255, 0, 0.3);
+  border-color: green;
+}
+
+.alert.information {
+  background-color: rgba(0, 0, 255, 0.3);
+  border-color: blue;
+}
+
+.alert.warning {
+  background-color: rgba(255, 255, 0, 0.3);
+  border-color: yellow;
+}
+
+.alert.error {
+  background-color: rgba(255, 0, 0, 0.3);
+  border-color: red;
+}

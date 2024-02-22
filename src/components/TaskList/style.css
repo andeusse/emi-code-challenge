@@ -1,0 +1,20 @@
+.tasks-container {
+  display: grid;
+  height: auto;
+  min-width: auto;
+  min-height: auto;
+  grid-template-columns: repeat(1, 100%);
+  grid-column-gap: 0px;
+}
+
+@media (min-width: 768px) {
+  .tasks-container {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media (min-width: 1281px) {
+  .tasks-container {
+    grid-template-columns: repeat(5, 20%);
+  }
+}

@@ -1,0 +1,16 @@
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.pagination-selected-page {
+  background-color: var(--background-color);
+  color: var(--secondary-text-color);
+}
+
+.pagination-dots {
+  font-size: 2rem;
+}

@@ -1,0 +1,26 @@
+.badge {
+  text-transform: uppercase;
+  border-radius: 10px;
+  padding: 2px 10px;
+  font-size: 1rem;
+}
+
+.badge.new {
+  background-color: blue;
+  color: white;
+}
+
+.badge.active {
+  background-color: green;
+  color: white;
+}
+
+.badge.resolved {
+  background-color: yellow;
+  color: black;
+}
+
+.badge.closed {
+  background-color: red;
+  color: white;
+}
