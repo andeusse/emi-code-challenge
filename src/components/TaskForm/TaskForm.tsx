@@ -52,12 +52,12 @@ const TaskForm = (props: Props) => {
           setData(id, task);
         }
       }
-      navigate('/tasks');
+      navigate(-1);
     }
   };
 
   const handleBack = () => {
-    navigate('/tasks');
+    navigate(-1);
   };
 
   const handleAddNote = () => {

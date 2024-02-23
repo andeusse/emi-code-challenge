@@ -13,7 +13,7 @@ import './style.css';
 type Props = {
   pages: number;
   currentPage: number;
-  setCurrentPage: React.Dispatch<number>;
+  setCurrentPage: (p: number) => void;
 };
 
 const Pagination = (props: Props) => {

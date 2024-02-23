@@ -12,16 +12,27 @@ import { useAppSelector } from '../../redux/reduxHooks';
 import { deleteData, getData, getDataLength } from '../../utils/dataBase';
 import Pagination from '../UI/Pagination/Pagination';
 import { PAGES_NUMBER } from '../../config/config';
-import { useNavigate } from 'react-router-dom';
+import {
+  createSearchParams,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 
 type Props = {};
 
 const TaskList = (props: Props) => {
-  const [page, setPage] = useState(1);
+  const { search } = useLocation();
+
+  const page = new URLSearchParams(search).get('page');
+
+  const [currentPage, setCurrentPage] = useState(page ? parseInt(page) : 1);
 
   const navigate = useNavigate();
 
-  const [data, error, loading] = useMockFetchData<task[]>(`page=${page - 1}`);
+  const [data, error, loading] = useMockFetchData<task[]>(
+    `page=${currentPage - 1}`
+  );
   const tasks = useAppSelector((state) => state.tasks.value);
 
   const dispatch = useDispatch();
@@ -38,9 +49,19 @@ const TaskList = (props: Props) => {
   const handleTaskDelete = (id: string) => {
     if (data) {
       deleteData(id);
-      const newData = getData(`page=${page - 1}`);
+      const newData = getData(`page=${currentPage - 1}`);
       dispatch(setTasks(newData));
     }
+  };
+
+  const handleCurrentPage = (newPage: number) => {
+    setCurrentPage(newPage);
+    navigate({
+      pathname: '',
+      search: createSearchParams({
+        page: newPage.toString(),
+      }).toString(),
+    });
   };
 
   return (
@@ -74,8 +95,8 @@ const TaskList = (props: Props) => {
         <div>
           <Pagination
             pages={Math.ceil(getDataLength() / PAGES_NUMBER)}
-            currentPage={page}
-            setCurrentPage={setPage}
+            currentPage={currentPage}
+            setCurrentPage={handleCurrentPage}
           ></Pagination>
         </div>
       )}
