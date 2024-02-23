@@ -15,12 +15,14 @@ const Error = (props: Props) => {
           alt="Not Found"
         ></img>
       </div>
-      <LinkButton to={`/`} icon={<FaHome></FaHome>}>
-        Home
-      </LinkButton>
-      <LinkButton to={`/tasks`} icon={<FaTasks></FaTasks>}>
-        Tasks
-      </LinkButton>
+      <div className="error-button-container">
+        <LinkButton to={`/`} icon={<FaHome></FaHome>}>
+          Home
+        </LinkButton>
+        <LinkButton to={`/tasks`} icon={<FaTasks></FaTasks>}>
+          Tasks
+        </LinkButton>
+      </div>
     </>
   );
 };

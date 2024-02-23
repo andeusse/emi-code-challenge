@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Task from '../../components/Task/Task';
 import { task } from '../../types/tasks';
 import { useMockFetchData } from '../../hooks/useMockFetchData';
@@ -12,12 +12,7 @@ import { useAppSelector } from '../../redux/reduxHooks';
 import { deleteData, getData, getDataLength } from '../../utils/dataBase';
 import Pagination from '../UI/Pagination/Pagination';
 import { PAGES_NUMBER } from '../../config/config';
-import {
-  createSearchParams,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { createSearchParams, useLocation, useNavigate } from 'react-router-dom';
 
 type Props = {};
 
@@ -42,17 +37,35 @@ const TaskList = (props: Props) => {
     dispatch(setTasks(data as task[]));
   }, [data, loading, dispatch]);
 
-  const handleTaskEdit = (id: string) => {
-    navigate(`/tasks/${id}`);
-  };
+  const displayTasks = useMemo(() => {
+    const handleTaskDelete = (id: string) => {
+      if (data) {
+        deleteData(id);
+        const newData = getData(`page=${currentPage - 1}`);
+        dispatch(setTasks(newData));
+      }
+    };
 
-  const handleTaskDelete = (id: string) => {
-    if (data) {
-      deleteData(id);
-      const newData = getData(`page=${currentPage - 1}`);
-      dispatch(setTasks(newData));
-    }
-  };
+    const handleTaskEdit = (id: string) => {
+      navigate(`/tasks/${id}`);
+    };
+
+    return (
+      <div className="tasks-container">
+        {tasks !== null &&
+          tasks.map((task, index) => {
+            return (
+              <Task
+                key={`${index} ${task.title}`}
+                {...task}
+                editTask={handleTaskEdit}
+                deleteTask={handleTaskDelete}
+              ></Task>
+            );
+          })}
+      </div>
+    );
+  }, [currentPage, data, dispatch, navigate, tasks]);
 
   const handleCurrentPage = (newPage: number) => {
     setCurrentPage(newPage);
@@ -78,19 +91,7 @@ const TaskList = (props: Props) => {
           type={alert.information}
         ></Alert>
       )}
-      <div className="tasks-container">
-        {tasks !== null &&
-          tasks.map((task, index) => {
-            return (
-              <Task
-                key={`${index} ${task.title}`}
-                {...task}
-                editTask={handleTaskEdit}
-                deleteTask={handleTaskDelete}
-              ></Task>
-            );
-          })}
-      </div>
+      {displayTasks}
       {tasks !== null && (
         <div>
           <Pagination

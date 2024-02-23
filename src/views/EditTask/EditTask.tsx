@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getDataById } from '../../utils/dataBase';
 import TaskForm from '../../components/TaskForm/TaskForm';
@@ -13,7 +13,9 @@ const EditTask = (props: Props) => {
   return (
     <div className="main-container">
       <h1 className="main-title">Edit Task</h1>
-      <TaskForm id={id ? id : ''} task={task} setTask={setTask}></TaskForm>
+      <Suspense fallback={<div>Loading...</div>}>
+        <TaskForm id={id ? id : ''} task={task} setTask={setTask}></TaskForm>
+      </Suspense>
     </div>
   );
 };

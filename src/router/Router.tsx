@@ -8,6 +8,9 @@ import Tasks from '../views/Tasks/Tasks';
 import Error from '../views/Error/Error';
 import Home from '../views/Home/Home';
 import EditTask from '../views/EditTask/EditTask';
+import { Suspense } from 'react';
+import Alert from '../components/UI/Alert/Alert';
+import { alert } from '../types/alert';
 
 type Props = {};
 
@@ -16,7 +19,11 @@ const Router = (props: Props) => {
     {
       path: '/',
       element: <NavBar></NavBar>,
-      errorElement: <Error></Error>,
+      errorElement: (
+        <Suspense fallback={<Alert text="404" type={alert.error}></Alert>}>
+          <Error></Error>
+        </Suspense>
+      ),
       children: [
         {
           path: '/tasks',

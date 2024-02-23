@@ -12,14 +12,12 @@ type Props = {
 const LinkButton = (props: Props) => {
   const { to, icon, children } = props;
   return (
-    <div className="button-container">
-      <button className="button">
-        <Link to={to}>
-          <span className="button-icon">{icon} </span>
-          {children}
-        </Link>
-      </button>
-    </div>
+    <button className="button">
+      <Link to={to}>
+        <span className="button-icon">{icon} </span>
+        {children}
+      </Link>
+    </button>
   );
 };
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { task } from '../../types/tasks';
 import Bagde from '../UI/Badge/Bagde';
 import IconButton from '../UI/IconButton/IconButton';
@@ -84,4 +85,4 @@ const Task = (props: task & Props) => {
   );
 };
 
-export default Task;
+export default React.memo(Task);

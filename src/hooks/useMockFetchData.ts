@@ -11,7 +11,9 @@ export const useMockFetchData = <T extends unknown>(url: string) => {
       try {
         setLoading(true);
         const pageTasks = getData(url);
+        //To see how to handle the error on the API error
         // throw new Error('not implemented');
+        //To see how the app handles the delay of the API
         setTimeout(function () {
           setData(pageTasks as T);
           setError(null);
